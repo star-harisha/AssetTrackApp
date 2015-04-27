@@ -22,19 +22,18 @@
     <script src="http://192.168.2.13:8010/Services/AssetsTackService.svc/js"></script>
     <script>
         // When the browser is ready...
-        takePicture: function() {
-            navigator.camera.getPicture( function( imageURI ) {
-                alert( imageURI );
+        function takePicture() {
+            navigator.camera.getPicture(function (imageURI) {
+                alert(imageURI);
             },
-            function( message ) {
-                alert( message );
+            function (message) {
+                alert(message);
             },
             {
                 quality: 50,
                 destinationType: Camera.DestinationType.FILE_URI
             });
         }
-        };
         $(function () {
             $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' });
             // Setup form validation on the #register-form element
