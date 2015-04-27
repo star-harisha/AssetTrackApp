@@ -20,4 +20,6 @@
 
   <gap:plugin name="org.apache.cordova.core.camera" />
   <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
+  <access origin="*" subdomains="true"/>
+  <access uri="*" subdomains="true" />
 </widget>

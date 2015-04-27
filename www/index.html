@@ -71,7 +71,6 @@
             $("#btnSignIn").click(function () {
                 $("#signInError").hide();
                 if ($("form").valid()) {
-                    debugger;
                     var svc = new AssetsTackService();
                     svc.ValidateLogin($("#email").val(), $("#password").val(), success, fail);
                 }
