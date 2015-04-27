@@ -125,8 +125,8 @@
                         AssetImageData: $('#choosefile').val()
                     }
                     var svc = new AssetsTackService();
-                    svc.GetAllAssetsGroups('harish', 'hari@4321', success, fail);
-                    //svc.createAssets("harish", "hari@4321", asset, success, fail);
+                    //svc.GetAllAssetsGroups('harish', 'hari@4321', success, fail);
+                    svc.addAssets("harish", "hari@4321", asset, success, fail);
                 }
             });
 
