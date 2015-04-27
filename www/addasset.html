@@ -23,14 +23,17 @@
     <script type="text/javascript" src="phonegap.js"></script>
     <script>
         // When the browser is ready...
-        function onPhotoFileSuccess(imageData) {
+        function onSuccess(imageData) {
             alert(imageData);
         }
         function onFail(message) {
             alert('Failed because: ' + message);
         }
         function takePicture() {
-            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+            navigator.camera.getPicture(onSuccess, onFail, {
+                quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL
+            });
         }
         $(function () {
             $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' });
