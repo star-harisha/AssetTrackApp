@@ -19,8 +19,30 @@
     <!-- jQuery Form Validation code -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="js/MicrosoftAjax.js"></script>
-    <script src="http://192.168.2.13:8010/Services/AssetsTackService.svc/js"></script>
+    <script src="http://117.247.182.228:8010/Services/AssetsTackService.svc/js"></script>
+    <script type="text/javascript" src="phonegap.js"></script>
     <script>
+        // When the browser is ready...
+        function onSuccess(imageData) {
+            $('#choosefile').val(imageData);
+            alert(imageData);
+        }
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
+        function takePicture() {
+            navigator.camera.getPicture(function (imageData) {
+                alert(imageData);
+            },
+            function (message) {
+                alert(message);
+            },
+            {
+                quality: 50,
+                encodingType: Camera.EncodingType.JPEG,
+                destinationType: Camera.DestinationType.DATA_URL
+            });
+        }
         // When the browser is ready...
         function getParameterByName(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -197,7 +219,10 @@
                 <div class="name">
                     <input name="purchasevalue" id="purchasevalue" type="text" class="txt_box9" placeholder="Purchase Value">
                 </div>
-                <input name="choosefile" class="addphotos" type="file" value="Add Photos">
+                <div onclick="takePicture();" class="addphotos">
+                    Choose File
+                </div>
+                <input name="choosefile" id="choosefile" class="addphotos" type="hidden" value="">
             </form>
 
             <div class="addgroup2">
@@ -205,9 +230,7 @@
             </div>
             <label id="signInError" class="service-error" style="display: none">* system temporarily unavailable</label>
             <input id="btnSignIn" type="button" class="addgroup3" value="Save">
-
         </div>
-
     </div>
     <!-- gridcontainer clearfix ends here -->
 </body>
