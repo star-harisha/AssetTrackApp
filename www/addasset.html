@@ -24,13 +24,20 @@
     <script>
         // When the browser is ready...
         function onSuccess(imageData) {
+            $('#choosefile').val(imageData);
             alert(imageData);
         }
         function onFail(message) {
             alert('Failed because: ' + message);
         }
         function takePicture() {
-            navigator.camera.getPicture(onSuccess, onFail, {
+            navigator.camera.getPicture(function (imageData) {
+                alert(imageData);
+            },
+            function (message) {
+                alert(message);
+            },
+            {
                 quality: 50,
                 destinationType: Camera.DestinationType.DATA_URL
             });
@@ -113,11 +120,12 @@
                         AssetGroupID: Number($('#selectgroup').val()),
                         AssetPurchaseDate: $('#datepicker').val(),
                         AssetSerialNumber: $('#slnumb').val(),
-                        AssetPurchaseValue: $('#purchasevalue').val()
+                        AssetPurchaseValue: $('#purchasevalue').val(),
+                        AssetImageData: $('#choosefile').val()
                     }
-                    //alert(asset.AssetsName + " : " + asset.AssetPurchaseValue + " : " + asset.AssetGroupID + " : " + asset.AssetPurchaseDate + " : " + asset.AssetSerialNumber)
                     var svc = new AssetsTackService();
-                    svc.createAssets("harish", "hari@4321", asset, success, fail);
+                    svc.GetAllAssetsGroups('harish', 'hari@4321', success, fail);
+                    //svc.createAssets("harish", "hari@4321", asset, success, fail);
                 }
             });
 
@@ -188,7 +196,7 @@
                 </div>
 
                 <div class="numb">
-                    <input name="slnumb" id="slnumb" type="number" class="txt_box10" placeholder="S/N">
+                    <input name="slnumb" id="slnumb" type="text" class="txt_box10" placeholder="S/N">
                 </div>
 
                 <input type="text" name="datepicker" id="datepicker" placeholder="Date of Purchase">
@@ -198,7 +206,7 @@
                 <div onclick="takePicture();" class="addphotos">
                     Choose File
                 </div>
-                <input name="choosefile" class="addphotos" type="hidden" value="Add Photos">
+                <input name="choosefile" id="choosefile" class="addphotos" type="hidden" value="">
             </form>
 
             <div class="addgroup2">
