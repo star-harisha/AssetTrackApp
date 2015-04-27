@@ -15,13 +15,26 @@
     <script src="js/1.7.2jquery.min.js"></script>
     <!-- Load jQuery and the validate plugin -->
     <script src="js/jquery.validate.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <!-- jQuery Form Validation code -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="js/MicrosoftAjax.js"></script>
-    <script src="http://117.247.182.228:8010/Services/AssetsTackService.svc/js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script src="http://192.168.2.13:8010/Services/AssetsTackService.svc/js"></script>
     <script>
         // When the browser is ready...
+        takePicture: function() {
+            navigator.camera.getPicture( function( imageURI ) {
+                alert( imageURI );
+            },
+            function( message ) {
+                alert( message );
+            },
+            {
+                quality: 50,
+                destinationType: Camera.DestinationType.FILE_URI
+            });
+        }
+        };
         $(function () {
             $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' });
             // Setup form validation on the #register-form element
@@ -111,8 +124,6 @@
         });
 
     </script>
-
-       
 </head>
 
 <body style="background-color:#1d1d23">
@@ -168,14 +179,8 @@
             <form>
                 <select class="dropdown_box8" name="selectgroup" id="selectgroup">
                     <option value=""> Select group </option>
-                    <option value="1"> Asset-1 </option>
-                    <option value="1"> Asset-2 </option>
-                    <option value="1"> Asset-3 </option>
-                    <option value="1"> Asset-4 </option>
-                    <option value="1"> Asset-5 </option>
-                    <option value="1"> Asset-6 </option>
-                    <option value="1"> Asset-7 </option>
-                    <option value="1"> Asset-8 </option>
+                    <option value="1"> test </option>
+                    <option value="1"> demo group </option>
                 </select>
 
                 <div class="name">
@@ -190,7 +195,10 @@
                 <div class="name">
                     <input name="purchasevalue" id="purchasevalue" type="text" class="txt_box9" placeholder="Purchase Value">
                 </div>
-                <input name="choosefile" class="addphotos" type="file" value="Add Photos">
+                <div onclick="takePicture();" class="addphotos">
+                    Choose File
+                </div>
+                <input name="choosefile" class="addphotos" type="hidden" value="Add Photos">
             </form>
 
             <div class="addgroup2">
