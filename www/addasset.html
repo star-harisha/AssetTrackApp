@@ -24,20 +24,20 @@
     <script>
         // When the browser is ready...
         function onSuccess(imageData) {
-            //$('#choosefile').val(imageData);
+            /*
             var image = document.getElementById('myImage');
             image.src = "data:image/jpeg;base64," + imageData;
-           // alert(imageData);
+            */
+            $('#assetImage').attr("src", "data:image/jpeg;base64," + imageData);
+            $('#assetImage').show();
         }
         function onFail(message) {
             alert('Failed because: ' + message);
         }
         function takePicture() {
             navigator.camera.getPicture(function (imageData) {
-                var image = document.getElementById('myImage');
-                image.src = "data:image/jpeg;base64," + imageData;
-
-               // alert(imageData);
+                $('#assetImage').attr("src", "data:image/jpeg;base64," + imageData);
+                $('#assetImage').show();
             },
             function (message) {
                 alert(message);
@@ -127,7 +127,7 @@
                         AssetPurchaseDate: $('#datepicker').val(),
                         AssetSerialNumber: $('#slnumb').val(),
                         AssetPurchaseValue: $('#purchasevalue').val(),
-                        AssetImageData:"" //$('#choosefile').val()
+                        AssetImageData: "" //$('#choosefile').val()
                     }
                     var svc = new AssetsTackService();
                     //svc.GetAllAssetsGroups('harish', 'hari@4321', success, fail);
@@ -189,7 +189,7 @@
         <!-- menu ends here -->
         <!-- content box starts from here -->
         <div class="box_group">
-            <img id="myImage" alt="Asset Image" >
+            <img id="assetImage" alt="Asset Image" style="display:none;">
             <form>
                 <select class="dropdown_box8" name="selectgroup" id="selectgroup">
                     <option value=""> Select group </option>
