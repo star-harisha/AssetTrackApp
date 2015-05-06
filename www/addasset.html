@@ -22,18 +22,7 @@
     <script src="http://117.247.182.228:8010/Services/AssetsTackService.svc/js"></script>
     <script type="text/javascript" src="phonegap.js"></script>
     <script>
-        // When the browser is ready...
-        function onSuccess(imageData) {
-            /*
-            var image = document.getElementById('myImage');
-            image.src = "data:image/jpeg;base64," + imageData;
-            */
-            $('#assetImage').attr("src", "data:image/jpeg;base64," + imageData);
-            $('#assetImage').show();
-        }
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
+
         function takePicture() {
             navigator.camera.getPicture(function (imageData) {
                 $('#assetImage').attr("src", "data:image/jpeg;base64," + imageData);
@@ -189,8 +178,9 @@
         <!-- menu ends here -->
         <!-- content box starts from here -->
         <div class="box_group">
-            <img id="assetImage" alt="Asset Image" style="display:none;">
+            
             <form>
+                <img id="assetImage" alt="Asset Image" style="display:none;">
                 <select class="dropdown_box8" name="selectgroup" id="selectgroup">
                     <option value=""> Select group </option>
                     <option value="1"> test </option>
