@@ -27,6 +27,8 @@
             navigator.camera.getPicture(function (imageData) {
                 $('#assetImage').attr("src", "data:image/jpeg;base64," + imageData);
                 $('#assetImage').show();
+
+                alert($('#assetImage').attr("src"));
             },
             function (message) {
                 alert(message);
