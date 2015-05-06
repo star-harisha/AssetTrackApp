@@ -25,14 +25,19 @@
         // When the browser is ready...
         function onSuccess(imageData) {
             //$('#choosefile').val(imageData);
-            alert(imageData);
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+           // alert(imageData);
         }
         function onFail(message) {
             alert('Failed because: ' + message);
         }
         function takePicture() {
             navigator.camera.getPicture(function (imageData) {
-                alert(imageData);
+                var image = document.getElementById('myImage');
+                image.src = "data:image/jpeg;base64," + imageData;
+
+               // alert(imageData);
             },
             function (message) {
                 alert(message);
@@ -184,7 +189,7 @@
         <!-- menu ends here -->
         <!-- content box starts from here -->
         <div class="box_group">
-
+            <img id="myImage" alt="Asset Image" >
             <form>
                 <select class="dropdown_box8" name="selectgroup" id="selectgroup">
                     <option value=""> Select group </option>
