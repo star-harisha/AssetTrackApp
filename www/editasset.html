@@ -64,14 +64,49 @@
             }
         }
 
+        function groupFail(result) {
+            //spinnerplugin.hide();
+            try {
+                alert("fail" + result);
+            }
+            catch (e) {
+
+            }
+        }
+        function groupSuccess(result) {
+            var htmlData = '';
+            var response = JSON.parse(result.toString());
+            //spinnerplugin.hide();
+            if (response.requestState) {
+                var groupData = JSON.parse(response.result.toString());
+                htmlData = '<option value=""> Select group </option>';
+                for (var i = 0; i < groupData.length; i++) {
+                    htmlData += '<option value="' + groupData[i].ID + '">' + groupData[i].AssetsGroupName + '</option>';
+                }
+                $("#selectgroup").html(htmlData);
+            }
+            else {
+                alert(response.result.toString());
+            }
+
+        }
+
         $(function () {
             $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' });
+            var svc = new AssetsTackService();
+            svc.GetAllAssetsGroups('harish', 'hari@4321', groupSuccess, groupFail);
             //$("#assetImg").attr("src", getParameterByName('AssetImage'));
             $('#assetsID').val(getParameterByName('ID'));
             $('#Name').val(getParameterByName('AssetsName'));
             $('#datepicker').val(getParameterByName('AssetPurchaseDate'));
             $('#purchasevalue').val(getParameterByName('AssetPurchaseValue'));
             $("#slnumb").val(getParameterByName('AssetSerialNumber'));
+            $('#MethodOfDepreciation').val(getParameterByName('MethodOfDepreciation'));
+            $('#DepreciationRate').val(getParameterByName('DepreciationRate'));
+            $('#Location').val(getParameterByName('Location'));
+            $('#SubLocation').val(getParameterByName('SubLocation'));
+            $('#SubSubLocation').val(getParameterByName('SubSubLocation'));
+            $('#UsefulLife').val(getParameterByName('UsefulLife'));
             // Setup form validation on the #register-form element
             $("form").validate({
                 // Specify the validation rules
@@ -164,11 +199,11 @@
                         AssetGroupID: Number($('#selectgroup').val()),
                         AssetPurchaseDate: $('#datepicker').val(),
                         AssetSerialNumber: $('#slnumb').val(),
-                        AssetPurchaseValue: $('#purchasevalue').val(),
+                        AssetPurchaseValue: Number($('#purchasevalue').val()),
                         MethodOfDepreciation: $('#MethodOfDepreciation').val(),
-                        DepreciationRate: Number($('#DepreciationRate').val()),
+                        DepreciationRate: $('#DepreciationRate').val(),
                         Location: $('#Location').val(),
-                        SubLocation: Number($('#SubLocation').val()),
+                        SubLocation: $('#SubLocation').val(),
                         SubSubLocation: $('#SubSubLocation').val(),
                         UsefulLife: $('#UsefulLife').val()
 
@@ -176,7 +211,6 @@
                 }
                 var svc = new AssetsTackService();
                 svc.editAssets("harish", "hari@4321", asset, success, fail);
-            }
             });
 
         });
@@ -239,11 +273,7 @@
 
             <form>
                 <img id="assetImage" alt="Asset Image" style="display:none;">
-                <select class="dropdown_box8" name="selectgroup" id="selectgroup">
-                    <option value=""> Select group </option>
-                    <option value="1"> test </option>
-                    <option value="1"> demo group </option>
-                </select>
+                <select class="dropdown_box8" name="selectgroup" id="selectgroup"></select>
 
                 <div class="name">
                     <input name="Name" id="Name" type="text" class="txt_box9" placeholder="Name">
@@ -267,7 +297,12 @@
                     <input name="Location" id="Location" type="text" class="txt_box9" placeholder="Location">
                 </div>
                 <div class="name">
-                    <input name="MethodOfDepreciation" id="MethodOfDepreciation" type="text" class="txt_box9" placeholder="Method of Depreciation">
+                    <select class="dropdown_box8" name="MethodOfDepreciation" id="MethodOfDepreciation">
+                        <option value="">Method of Depreciation </option>
+                        <option value="WDV">WDV</option>
+                        <option value="SLM">SLM</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
 
                 <div class="name">

@@ -37,8 +37,59 @@
                 destinationType: Camera.DestinationType.DATA_URL
             });
         }
+        function fail(result) {
+
+            try {
+                alert("fail" + result.toString());
+            }
+            catch (e) {
+
+            }
+        }
+        function success(result) {
+            debugger;
+
+            var response = JSON.parse(result.toString());
+            if (response.requestState) {
+                $("#signInError").hide();
+                window.location = "dashboard.html";
+            }
+            else {
+                $("#signInError").show();
+            }
+        }
+
+        function groupFail(result) {
+            //spinnerplugin.hide();
+            try {
+                alert("fail" + result);
+            }
+            catch (e) {
+
+            }
+        }
+        function groupSuccess(result) {
+            var htmlData = '';
+            var response = JSON.parse(result.toString());
+            //spinnerplugin.hide();
+            if (response.requestState) {
+                var groupData = JSON.parse(response.result.toString());
+                htmlData = '<option value=""> Select group </option>';
+                for (var i = 0; i < groupData.length; i++) {
+                    htmlData += '<option value="' + groupData[i].ID + '">' + groupData[i].AssetsGroupName + '</option>';
+                }
+                $("#selectgroup").html(htmlData);
+            }
+            else {
+                alert(response.result.toString());
+            }
+
+        }
+
         $(function () {
             $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' });
+            var svc = new AssetsTackService();
+            svc.GetAllAssetsGroups('harish', 'hari@4321', groupSuccess, groupFail);
             // Setup form validation on the #register-form element
             $("form").validate({
                 // Specify the validation rules
@@ -115,41 +166,34 @@
                 }
             });
 
-            function fail(result) {
 
-                try {
-                    alert("fail" + result.toString());
-                }
-                catch (e) {
-
-                }
-            }
-            function success(result) {
-                debugger;
-
-                var response = JSON.parse(result.toString());
-                if (response.requestState) {
-                    $("#signInError").hide();
-                    window.location = "dashboard.html";
-                }
-                else {
-                    $("#signInError").show();
-                }
-            }
 
             $("#btnSignIn").click(function () {
                 if ($("form").valid()) {
                     var asset = {
+                        //AssetsName: $('#Name').val(),
+                        //AssetGroupID: Number($('#selectgroup').val()),
+                        //AssetPurchaseDate: $('#datepicker').val(),
+                        //AssetSerialNumber: $('#slnumb').val(),
+                        //AssetPurchaseValue: $('#purchasevalue').val(),
+                        //AssetImageData: "", //$('#choosefile').val()
+                        //MethodOfDepreciation: $('#MethodOfDepreciation').val(),
+                        //DepreciationRate: Number($('#DepreciationRate').val()),
+                        //Location: $('#Location').val(),
+                        //SubLocation: Number($('#SubLocation').val()),
+                        //SubSubLocation: $('#SubSubLocation').val(),
+                        //UsefulLife: $('#UsefulLife').val()
+
                         AssetsName: $('#Name').val(),
                         AssetGroupID: Number($('#selectgroup').val()),
                         AssetPurchaseDate: $('#datepicker').val(),
                         AssetSerialNumber: $('#slnumb').val(),
-                        AssetPurchaseValue: $('#purchasevalue').val(),
-                        AssetImageData: "", //$('#choosefile').val()
+                        AssetPurchaseValue: Number($('#purchasevalue').val()),
+                        AssetImageData: "",
                         MethodOfDepreciation: $('#MethodOfDepreciation').val(),
-                        DepreciationRate: Number($('#DepreciationRate').val()),
+                        DepreciationRate: $('#DepreciationRate').val(),
                         Location: $('#Location').val(),
-                        SubLocation: Number($('#SubLocation').val()),
+                        SubLocation: $('#SubLocation').val(),
                         SubSubLocation: $('#SubSubLocation').val(),
                         UsefulLife: $('#UsefulLife').val()
                     }
@@ -217,11 +261,7 @@
             <form>
                 <img id="assetImage" alt="Asset Image" style="display:none;">
 
-                <select class="dropdown_box8" name="selectgroup" id="selectgroup">
-                    <option value=""> Select group </option>
-                    <option value="1"> test </option>
-                    <option value="1"> demo group </option>
-                </select>
+                <select class="dropdown_box8" name="selectgroup" id="selectgroup"></select>
 
                 <div class="name">
                     <input name="Name" id="Name" type="text" class="txt_box9" placeholder="Name">
