@@ -15,7 +15,30 @@
     <script src="http://192.168.2.13:8010/Services/AssetsTackService.svc/js"></script>
     <!-- jQuery Form Validation code -->
     <script>
+        function fail(result) {
 
+            try {
+                alert("fail" + result);
+            }
+            catch (e) {
+
+            }
+            spinnerplugin.hide();
+        }
+        function success(result) {
+            debugger;
+            spinnerplugin.hide();
+            var response = JSON.parse(result.toString());
+            if (response.requestState) {
+                $("#signInError").hide();
+                //localStorage.setItem("AssetUserName", $("#email").val());
+                //localStorage.setItem("AssetPassword", $("#password").val());
+                window.location = "dashboard.html";
+            }
+            else {
+                $("#signInError").show();
+            }
+        }
         // When the browser is ready...
         $(function () {
             // Setup form validation on the #register-form element
@@ -46,31 +69,7 @@
                     form.submit();
                 }
             });
-            function fail(result) {
 
-                try {
-                    alert("fail" + result);
-                }
-                catch (e) {
-
-                }
-                spinnerplugin.hide();
-            }
-            function success(result) {
-                debugger;
-
-                var response = JSON.parse(result.toString());
-                if (response.requestState) {
-                    $("#signInError").hide();
-                    //localStorage.setItem("AssetUserName", $("#email").val());
-                    //localStorage.setItem("AssetPassword", $("#password").val());
-                    window.location = "dashboard.html";
-                }
-                else {
-                    $("#signInError").show();
-                }
-                spinnerplugin.hide();
-            }
             $("#btnSignIn").click(function () {
                 $("#signInError").hide();
                 if ($("form").valid()) {
