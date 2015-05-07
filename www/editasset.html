@@ -76,6 +76,7 @@
             $("form").validate({
                 // Specify the validation rules
                 rules: {
+
                     Name: {
                         required: true
                     },
@@ -91,6 +92,24 @@
                     choosefile: {
                         required: true
                     },
+                    MethodOfDepreciation: {
+                        required: true
+                    },
+                    DepreciationRate: {
+                        required: true
+                    },
+                    Location: {
+                        required: true
+                    },
+                    SubLocation: {
+                        required: true
+                    },
+                    SubSubLocation: {
+                        required: true
+                    },
+                    UsefulLife: {
+                        required: true
+                    }
 
                 },
 
@@ -111,6 +130,24 @@
                     choosefile: {
                         required: "Choose File"
                     },
+                    MethodOfDepreciation: {
+                        required: "Enter Method of Depreciation"
+                    },
+                    DepreciationRate: {
+                        required: "Enter Depreciation Rate"
+                    },
+                    Location: {
+                        required: "Enter Location"
+                    },
+                    SubLocation: {
+                        required: "Enter Sub Location"
+                    },
+                    SubSubLocation: {
+                        required: "Enter Sub Sub Location"
+                    },
+                    UsefulLife: {
+                        required: "Enter Useful Life"
+                    }
 
                 },
 
@@ -127,11 +164,19 @@
                         AssetGroupID: Number($('#selectgroup').val()),
                         AssetPurchaseDate: $('#datepicker').val(),
                         AssetSerialNumber: $('#slnumb').val(),
-                        AssetPurchaseValue: $('#purchasevalue').val()
+                        AssetPurchaseValue: $('#purchasevalue').val(),
+                        MethodOfDepreciation: $('#MethodOfDepreciation').val(),
+                        DepreciationRate: Number($('#DepreciationRate').val()),
+                        Location: $('#Location').val(),
+                        SubLocation: Number($('#SubLocation').val()),
+                        SubSubLocation: $('#SubSubLocation').val(),
+                        UsefulLife: $('#UsefulLife').val()
+
                     }
-                    var svc = new AssetsTackService();
-                    svc.editAssets("harish", "hari@4321", asset, success, fail);
                 }
+                var svc = new AssetsTackService();
+                svc.editAssets("harish", "hari@4321", asset, success, fail);
+            }
             });
 
         });
@@ -212,6 +257,31 @@
                 <div class="name">
                     <input name="purchasevalue" id="purchasevalue" type="text" class="txt_box9" placeholder="Purchase Value">
                 </div>
+
+
+                <div class="name">
+                    <input name="DepreciationRate" id="DepreciationRate" type="text" class="txt_box9" placeholder="Depreciation Rate">
+                </div>
+
+                <div class="name">
+                    <input name="Location" id="Location" type="text" class="txt_box9" placeholder="Location">
+                </div>
+                <div class="name">
+                    <input name="MethodOfDepreciation" id="MethodOfDepreciation" type="text" class="txt_box9" placeholder="Method of Depreciation">
+                </div>
+
+                <div class="name">
+                    <input name="SubLocation" id="SubLocation" type="text" class="txt_box9" placeholder="Sub Location">
+                </div>
+                <div class="name">
+                    <input name="SubSubLocation" id="SubSubLocation" type="text" class="txt_box9" placeholder="Sub Sub Location">
+                </div>
+
+                <div class="name">
+                    <input name="UsefulLife" id="UsefulLife" type="text" class="txt_box9" placeholder="Useful Life">
+                </div>
+
+
                 <div onclick="takePicture();" class="addphotos">
                     Choose File
                 </div>
