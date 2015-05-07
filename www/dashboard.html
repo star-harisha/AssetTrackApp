@@ -14,19 +14,18 @@
     <script src="http://192.168.2.13:8010/Services/AssetsTackService.svc/js"></script>
     <script>
         function fail(result) {
-
+            spinnerplugin.hide();
             try {
                 alert("fail" + result);
             }
             catch (e) {
 
             }
-            spinnerplugin.hide();
         }
         function success(result) {
             var htmlData = '';
             var response = JSON.parse(result.toString());
-
+            spinnerplugin.hide();
             if (response.requestState) {
                 var groupData = JSON.parse(response.result.toString());
                 for (var i = 0; i < groupData.length; i++) {
@@ -42,7 +41,7 @@
             else {
                 alert(response.result.toString());
             }
-            spinnerplugin.hide();
+            
         }
         $(function () {
             debugger;

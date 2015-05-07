@@ -75,11 +75,11 @@
                 $("#signInError").hide();
                 if ($("form").valid()) {
                     var svc = new AssetsTackService();
-                    spinnerplugin.show({ fullscreen: true });
+                    spinnerplugin.show();
                     svc.ValidateLogin($("#email").val(), $("#password").val(), success, fail);
                 }
             });
-            window.location = "addasset.html";
+            //window.location = "addasset.html";
         });
     </script>
 
