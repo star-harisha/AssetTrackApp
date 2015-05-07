@@ -11,7 +11,7 @@
     <script src="js/1.7.2jquery.min.js"></script>
     <script src="styles/respond.min.js"></script>
     <script src="js/MicrosoftAjax.js"></script>
-    <script src="http://117.247.182.228:8010/Services/AssetsTackService.svc/js"></script>
+    <script src="http://192.168.2.13:8010/Services/AssetsTackService.svc/js"></script>
     <script>
         function fail(result) {
 
@@ -31,7 +31,7 @@
                 for (var i = 0; i < groupData.length; i++) {
                     htmlData += '<div class="contentbox2 group-item" group-id="' + groupData[i].ID + '" group-name="' +
                         groupData[i].AssetsGroupName + '" ><div class="groupname"><b>' + groupData[i].AssetsGroupName
-                        + '</b></div><div class="content_numberbox">' + '</div></div>';
+                        + '</b></div><div class="content_numberbox">' + groupData[i].AssetsCount + '</div></div>';
                 }
                 $("#groupList").html(htmlData);
                 $(".group-item").click(function () {
