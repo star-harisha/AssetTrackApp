@@ -47,7 +47,9 @@
                     var index = Number($(this).attr('assets-index'));
                     window.location = "assetsDetails.html?ID=" + assetsData[index].ID + "&AssetsName=" + assetsData[index].AssetsName +
                         "&AssetGroup=" + assetsData[index].AssetGroup + "&AssetGroupID=" + assetsData[index].AssetGroupID + "&AssetPurchaseDate=" + assetsData[index].AssetPurchaseDate + "&AssetPurchaseValue=" + assetsData[index].AssetPurchaseValue
-                    + "&AssetSerialNumber=" + assetsData[index].AssetSerialNumber + "&AssetImage" + assetsData[index].AssetImage;
+                    + "&AssetSerialNumber=" + assetsData[index].AssetSerialNumber + "&AssetImage" + assetsData[index].AssetImage
+                    + "&DepreciationRate=" + assetsData[index].DepreciationRate + "&Location=" + assetsData[index].Location + "&MethodOfDepreciation=" + assetsData[index].MethodOfDepreciation
+                    + "&SubLocation=" + assetsData[index].SubLocation + "&SubSubLocation=" + assetsData[index].SubSubLocation + "&UsefulLife=" + assetsData[index].UsefulLife;
                 });
             }
             else {

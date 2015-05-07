@@ -25,10 +25,20 @@
             $(".assets-PurchaseDate").html(getParameterByName('AssetPurchaseDate'));
             $(".assets-PurchaseValue").html(getParameterByName('AssetPurchaseValue'));
             $(".assets-SerialNumber").html(getParameterByName('AssetSerialNumber'));
+
+            $(".assets-DepreciationRate").html(getParameterByName('DepreciationRate'));
+            $(".assets-Location").html(getParameterByName('Location'));
+            $(".assets-MethodOfDepreciation").html(getParameterByName('MethodOfDepreciation'));
+            $(".assets-SubLocation").html(getParameterByName('SubLocation'));
+            $(".assets-SubSubLocation").html(getParameterByName('SubSubLocation'));
+            $(".assets-UsefulLife").html(getParameterByName('UsefulLife'));
+
             $("#btnEdit").click(function () {
                 window.location = "editasset.html?ID=" + getParameterByName('ID') + "&AssetsName=" + getParameterByName('AssetsName') +
                            "&AssetGroup=" + getParameterByName('AssetGroup') + "&AssetGroupID=" + getParameterByName('AssetGroupID') + "&AssetPurchaseDate=" + getParameterByName('AssetPurchaseDate') + "&AssetPurchaseValue=" + getParameterByName('AssetPurchaseValue')
-                       + "&AssetSerialNumber=" + getParameterByName('AssetSerialNumber') + "&AssetImage" + getParameterByName('AssetImage');
+                       + "&AssetSerialNumber=" + getParameterByName('AssetSerialNumber') + "&AssetImage" + getParameterByName('AssetImage')
+                + "&DepreciationRate=" + getParameterByName('DepreciationRate') + "&Location=" + getParameterByName('Location') + "&MethodOfDepreciation=" + getParameterByName('MethodOfDepreciation')
+                    + "&SubLocation=" + getParameterByName('SubLocation') + "&SubSubLocation=" + getParameterByName('SubSubLocation') + "&UsefulLife=" + getParameterByName('UsefulLife');
             });
 
         });
@@ -135,6 +145,38 @@
                 <div class="grp_name_box assets-SerialNumber">
                 </div>
             </div>
+
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Depreciation Rate</b> </div>
+                <div class="grp_name_box assets-DepreciationRate">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Location</b> </div>
+                <div class="grp_name_box assets-Location">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Method Of Depreciation</b> </div>
+                <div class="grp_name_box assets-MethodOfDepreciation">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Sub Location</b> </div>
+                <div class="grp_name_box assets-SubLocation">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Sub Sub Location</b> </div>
+                <div class="grp_name_box assets-SubSubLocation">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset UsefulLife</b> </div>
+                <div class="grp_name_box assets-UsefulLife">
+                </div>
+            </div>
+
         </div>
         <div class="box_group">
             <input id="btnEdit" style="margin-top:10px;" type="button" class="addgroup3" value="Edit">

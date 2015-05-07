@@ -42,7 +42,12 @@
                     $(".assets-SerialNumber").html(assetsData[i].AssetSerialNumber);
                     $(".assets-name").attr("asset-id", assetsData[i].ID);
                     $(".assets-Group").attr("group-id", assetsData[i].AssetGroupID);
-
+                    $(".assets-DepreciationRate").html(assetsData[i].DepreciationRate);
+                    $(".assets-Location").html(assetsData[i].Location);
+                    $(".assets-MethodOfDepreciation").html(assetsData[i].MethodOfDepreciation);
+                    $(".assets-SubLocation").html(assetsData[i].SubLocation);
+                    $(".assets-SubSubLocation").html(assetsData[i].SubSubLocation);
+                    $(".assets-UsefulLife").html(assetsData[i].UsefulLife);
                 }
             }
             else {
@@ -58,7 +63,9 @@
             $("#btnEdit").click(function () {
                 window.location = "editasset.html?ID=" + $(".assets-name").attr("asset-id") + "&AssetsName=" + $(".assets-name").text() +
                            "&AssetGroup=" + $(".assets-Group").text() + "&AssetGroupID=" + $(".assets-Group").attr("group-id") + "&AssetPurchaseDate=" + $(".assets-PurchaseDate").text() + "&AssetPurchaseValue=" + $(".assets-PurchaseValue").text()
-                       + "&AssetSerialNumber=" + $(".assets-SerialNumber").text() + "&AssetImage" + $("#assetImg").attr("src");
+                       + "&AssetSerialNumber=" + $(".assets-SerialNumber").text() + "&AssetImage" + $("#assetImg").attr("src") + "&DepreciationRate=" + $(".assets-DepreciationRate").text()
+                       + "&Location=" + $(".assets-Location").text() + "&MethodOfDepreciation=" + $(".assets-MethodOfDepreciation").text() + "&SubLocation=" + $(".assets-SubLocation").text()
+                       + "&SubSubLocation=" + $(".assets-SubSubLocation").text() + "&UsefulLife=" + $(".assets-UsefulLife").text();
             });
         });
 
@@ -163,6 +170,40 @@
                 <div class="grp_name_box assets-SerialNumber">
                 </div>
             </div>
+
+
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Depreciation Rate</b> </div>
+                <div class="grp_name_box assets-DepreciationRate">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Location</b> </div>
+                <div class="grp_name_box assets-Location">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Method Of Depreciation</b> </div>
+                <div class="grp_name_box assets-MethodOfDepreciation">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Sub Location</b> </div>
+                <div class="grp_name_box assets-SubLocation">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset Sub Sub Location</b> </div>
+                <div class="grp_name_box assets-SubSubLocation">
+                </div>
+            </div>
+            <div class="contentbox1">
+                <div class="groupname"><b>Asset UsefulLife</b> </div>
+                <div class="grp_name_box assets-UsefulLife">
+                </div>
+            </div>
+
+
         </div>
         <!-- content box ends here -->
         <div class="box_group">
