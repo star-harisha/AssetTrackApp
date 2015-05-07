@@ -19,7 +19,7 @@
     <!-- jQuery Form Validation code -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="js/MicrosoftAjax.js"></script>
-    <script src="http://117.247.182.228:8010/Services/AssetsTackService.svc/js"></script>
+    <script src="http://192.168.2.13:8010/Services/AssetsTackService.svc/js"></script>
     <script type="text/javascript" src="phonegap.js"></script>
     <script>
 
@@ -27,8 +27,6 @@
             navigator.camera.getPicture(function (imageData) {
                 $('#assetImage').attr("src", "data:image/jpeg;base64," + imageData);
                 $('#assetImage').show();
-
-                alert($('#assetImage').attr("src"));
             },
             function (message) {
                 alert(message);
@@ -56,10 +54,7 @@
                     },
                     datepicker: {
                         required: true
-                    },
-                    choosefile: {
-                        required: true
-                    },
+                    }
 
                 },
 
@@ -76,11 +71,7 @@
                     },
                     datepicker: {
                         required: "Enter Purchase Date"
-                    },
-                    choosefile: {
-                        required: "Choose File"
-                    },
-
+                    }
                 },
 
                 submitHandler: function (form) {
@@ -183,6 +174,7 @@
             
             <form>
                 <img id="assetImage" alt="Asset Image" style="display:none;">
+
                 <select class="dropdown_box8" name="selectgroup" id="selectgroup">
                     <option value=""> Select group </option>
                     <option value="1"> test </option>

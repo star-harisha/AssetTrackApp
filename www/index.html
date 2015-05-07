@@ -54,6 +54,7 @@
                 catch (e) {
 
                 }
+                spinnerplugin.hide();
             }
             function success(result) {
                 debugger;
@@ -68,11 +69,13 @@
                 else {
                     $("#signInError").show();
                 }
+                spinnerplugin.hide();
             }
             $("#btnSignIn").click(function () {
                 $("#signInError").hide();
                 if ($("form").valid()) {
                     var svc = new AssetsTackService();
+                    spinnerplugin.show({ fullscreen: true });
                     svc.ValidateLogin($("#email").val(), $("#password").val(), success, fail);
                 }
             });

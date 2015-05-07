@@ -21,6 +21,7 @@
             catch (e) {
 
             }
+            spinnerplugin.hide();
         }
         function success(result) {
             var htmlData = '';
@@ -41,9 +42,11 @@
             else {
                 alert(response.result.toString());
             }
+            spinnerplugin.hide();
         }
         $(function () {
             debugger;
+            spinnerplugin.show({ fullscreen: true });
             var svc = new AssetsTackService();
             svc.GetAllAssetsGroups('harish', 'hari@4321', success, fail);
         });
