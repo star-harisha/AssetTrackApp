@@ -14,7 +14,7 @@
     <script src="http://192.168.2.13:8010/Services/AssetsTackService.svc/js"></script>
     <script>
         function fail(result) {
-            spinnerplugin.hide();
+            //spinnerplugin.hide();
             try {
                 alert("fail" + result);
             }
@@ -25,7 +25,7 @@
         function success(result) {
             var htmlData = '';
             var response = JSON.parse(result.toString());
-            spinnerplugin.hide();
+            //spinnerplugin.hide();
             if (response.requestState) {
                 var groupData = JSON.parse(response.result.toString());
                 for (var i = 0; i < groupData.length; i++) {
@@ -45,7 +45,7 @@
         }
         $(function () {
             debugger;
-            spinnerplugin.show({ fullscreen: true });
+            //spinnerplugin.show();
             var svc = new AssetsTackService();
             svc.GetAllAssetsGroups('harish', 'hari@4321', success, fail);
         });

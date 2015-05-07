@@ -23,16 +23,14 @@
             catch (e) {
 
             }
-            spinnerplugin.hide();
+            //spinnerplugin.hide();
         }
         function success(result) {
             debugger;
-            spinnerplugin.hide();
+            //spinnerplugin.hide();
             var response = JSON.parse(result.toString());
             if (response.requestState) {
                 $("#signInError").hide();
-                //localStorage.setItem("AssetUserName", $("#email").val());
-                //localStorage.setItem("AssetPassword", $("#password").val());
                 window.location = "dashboard.html";
             }
             else {
@@ -74,7 +72,7 @@
                 $("#signInError").hide();
                 if ($("form").valid()) {
                     var svc = new AssetsTackService();
-                    spinnerplugin.show();
+                    //spinnerplugin.show();
                     svc.ValidateLogin($("#email").val(), $("#password").val(), success, fail);
                 }
             });
